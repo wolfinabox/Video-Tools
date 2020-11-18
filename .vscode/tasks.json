@@ -1,0 +1,28 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Pyinstaller Build",
+            "type": "shell",
+            "command": "${workspaceFolder}/env/scripts/pyinstaller.exe --additional-hooks-dir=. -p env/lib/site-packages  --add-data 'app/resources;resources' --hidden-import humanize --clean --noupx -y --onedir -i icon.ico ./main.spec",
+            "problemMatcher": [],
+
+        },
+
+        {
+            "label": "Compile PySide2 UI Files",
+            "type": "shell",
+            "command": "${workspaceFolder}/env/scripts/python ${workspaceFolder}/compile_ui_files.py ${workspaceFolder}/env/scripts/pyside2-uic  ./app",
+            "problemMatcher": []
+        }
+        {
+            "label": "Recreate VirtualEnv",
+            "type": "shell",
+            "command": "Remove-Item ${workspaceFolder}/env -Recurse -ErrorAction Ignore; py -3.8 -m venv env; ${workspaceFolder}/env/scripts/activate; ${workspaceFolder}/env/scripts/python -m pip install -r ${workspaceFolder}/requirements.txt; workbench.action.reloadWindow",
+            "problemMatcher": [],
+
+        },
+    ]
+}
