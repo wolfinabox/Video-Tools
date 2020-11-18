@@ -1,5 +1,5 @@
 import time
-from PySide2.QtCore import, QObject, QRunnable, QThreadPool, Signal, Slot
+from PySide2.QtCore import QObject, QRunnable, QThreadPool, Signal, Slot
 from PySide2.QtGui import QIcon
 #Don't include tools I can't (or shouldn't) upload
 try:
